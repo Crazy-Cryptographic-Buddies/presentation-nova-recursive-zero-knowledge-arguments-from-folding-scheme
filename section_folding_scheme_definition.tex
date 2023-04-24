@@ -1,0 +1,23 @@
+% !TeX root = main.tex
+\begin{frame}{Folding Scheme}
+	A folding scheme for a relation $\mathcal{R}$ consists of the following $4$ algorithms:
+	\begin{equation*}
+		(\FSKeyGen, \FSSetup, \FSFold, \FSVerify)
+	\end{equation*}
+	working as follows:
+	\begin{itemize}
+		\item $\FSSetup(1^\lambda)\rightarrow\pp$. 
+		\item $\FSKeyGen(\pp, \s)\rightarrow(\pk, \vk)$.
+		\item $\FSFold(\pk, (u_1, u_2, w_1, w_2))\rightarrow(u, w)$, run by prover $\Prover$.
+		\item $\FSVerify(\vk, u_1, u_2)\rightarrow u$, run by verifier $\Verifier$. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Correctness and Security Requirements}
+	\begin{itemize}
+		\item \textbf{Correctness.} If $\Prover$ and $\Verifier$ are honest, then $(u, w) \in \Relation$.
+		\item \textbf{Knowledge Soundness.} If $\Prover$ can fold $(u_1, u_2, w_1, w_2)$ to get $(u, w) \in \Relation$, then exists $\Extractor$ to extract  $(u_1, w_1) \in \Relation$ and $(u_2, w_2) \in \Relation$.
+		\item \textbf{Zero-Knowledge.} There exists simulator $\Simulator$ having oracle access to $\Verifier^\star$ that on inputs $\pk$, $u_1$, $u_2$ to output a transcript indistinguishable with real transcript (between $\Prover$ and $\Verifier$).
+		\item \textbf{Non-Interactivity.} Removing interactions.
+	\end{itemize}
+\end{frame}
