@@ -1,0 +1,15 @@
+% !TeX root = main.tex
+\begin{frame}{Incrementally Verifiable Computation (IVC)}
+	An \textbf{incremental computation} for a function $F$:
+	\begin{itemize}
+		\item Start with $z_0$.
+		\item For each $i > 0$, compute $z_i = F^{(i)}(z_0, \{\omega_0, \dots, \omega_{i - 1}\}) = F(z_{i - 1}, \omega_{i - 1})$.
+	\end{itemize}
+
+	An \textbf{incrementally verifiable computation (IVC)} for $F$:
+	\begin{itemize}
+		\item Return a proof $\Pi_i$ verifying correct computation of $F^{(i)}(\cdot)$.
+		\item \textbf{Completeness.} If $\Prover$ is honest, $\Pi_i$ satisfies verification.
+		\item \textbf{Soundness.} $\Pi_i$ satisfies verification $\Rightarrow$ prover cannot cheat.
+	\end{itemize}
+\end{frame}
