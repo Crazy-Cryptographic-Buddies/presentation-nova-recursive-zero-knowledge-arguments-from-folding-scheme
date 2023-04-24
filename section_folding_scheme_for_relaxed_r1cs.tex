@@ -6,11 +6,23 @@
 	
 	Assume we have $\mathbf{z}_1, \mathbf{z}_2$ satisfying $$\mathbf{A}\mathbf{z}_1\circ\mathbf{B}\mathbf{z}_1 = \mathbf{C}\mathbf{z}_1 \text{ and } \mathbf{A}\mathbf{z}_2\circ\mathbf{B}\mathbf{z}_2 = \mathbf{C}\mathbf{z}_2.$$
 	
-	We want to obtain folded instance $\mathbf{z} = \mathbf{z}_1 + r\mathbf{z}_2$ for some random challenge $r \in \mathbb{F}$.
+	We want to obtain folded instance $\mathbf{z} = \mathbf{z}_1 + r\cdot\mathbf{z}_2$ for some random challenge $r \in \mathbb{F}$.
 	
 	However, $\mathbf{A}\mathbf{z}\circ \mathbf{B}\mathbf{z} \not= \mathbf{C}\mathbf{z}$.
 \end{frame}
 
 \begin{frame}{Relaxed R1CS and Folding}
-	content...
+	$\mathbf{A}, \mathbf{B}, \mathbf{C}$: matrices over $\mathbb{F}$.
+	
+	A relaxed R1CS instance $(u, \mathbf{z}, \mathbf{e})$ satisfies $\mathbf{A}\mathbf{z}\cdot \mathbf{B}\mathbf{z} = u\mathbf{C}\mathbf{z} + \mathbf{e}$. 
+	
+	Fold $2$ instances $(u_1, \mathbf{z}_1, \mathbf{e}_1)$ and $(u_2, \mathbf{z}_2, \mathbf{e}_2)$ by observing
+	\begin{equation*}
+		\begin{aligned}
+			\mathbf{A}\explain{(\mathbf{z}_1 + r\cdot \mathbf{z}_2)}{\mathbf{z}} \circ\mathbf{B}\explain{(\mathbf{z}_1 + r\cdot \mathbf{z}_2)}{\mathbf{z}} = \explain{(u_1 + r\cdot u_2)}{u}\cdot\mathbf{C}\explain{(\mathbf{z}_1 + r\cdot \mathbf{z}_2)}{\mathbf{z}} + \mathbf{e}
+		\end{aligned}
+	\end{equation*}
+	where $\mathbf{e} = \mathbf{e}_1 + r\cdot \explain{(\mathbf{A}\mathbf{z}_1\circ\mathbf{B}\mathbf{z}_2 + \mathbf{A}\mathbf{z}_2 \circ\mathbf{B}\mathbf{z}_1 - u_1\cdot\mathbf{C}\mathbf{z}_2 - u_2\cdot\mathbf{C}\mathbf{z}_1)}{\mathbf{t}} + r^2\cdot\mathbf{e}_2$.
+	
+	Hence, $\mathbf{A}\mathbf{z}\circ\mathbf{B}\mathbf{z} = u\cdot \mathbf{C}\mathbf{z} + \mathbf{e}$ and $\mathbf{e} = \mathbf{e}_1 + r\cdot\mathbf{t} + r^2\cdot\mathbf{e}_2$.
 \end{frame}
