@@ -1,0 +1,57 @@
+\documentclass{beamer}
+
+\usepackage{tikz}
+
+\usetheme{metropolis}
+
+\input{macros.tex}
+
+\title{Nova: Recursive Zero-Knowledge Arguments from Folding Schemes}
+\date{25 April 2023}
+
+\newcommand{\wireindices}{\mathcal{I}}
+
+\AtBeginSection[]{
+	\begin{frame}
+		\vfill
+		\centering
+		\begin{beamercolorbox}[sep=8pt,center,shadow=false,rounded=true]{title}
+			\usebeamerfont{title}\insertsectionhead\par%
+		\end{beamercolorbox}
+		\vfill
+	\end{frame}
+}
+
+\begin{document}
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}{Outline}
+		\tableofcontents
+	\end{frame}
+
+	\section{Introduction}
+
+	\section{Folding Scheme - Syntax and Security Requirements}
+	
+	\section{Folding Scheme for Relaxed R1CS Instances}
+	
+	\section{Incrementally Verifiable Computation (IVC)}
+	
+	\section{IVC from Folding Scheme for Relaxed R1CS Instances}
+
+	\begin{frame}{}
+		\begin{center}
+			{\fontsize{20}{20}\selectfont Thank You!}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}[allowframebreaks]{References}
+		\setbeamertemplate{bibliography item}[text]
+		\bibliographystyle{alpha}
+		\bibliography{refs.bib}
+		
+	\end{frame}
+	
+\end{document}
