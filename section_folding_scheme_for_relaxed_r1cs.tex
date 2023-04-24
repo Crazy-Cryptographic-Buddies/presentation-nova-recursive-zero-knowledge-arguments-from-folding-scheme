@@ -26,3 +26,22 @@
 	
 	Hence, $\mathbf{A}\mathbf{z}\circ\mathbf{B}\mathbf{z} = u\cdot \mathbf{C}\mathbf{z} + \mathbf{e}$ and $\mathbf{e} = \mathbf{e}_1 + r\cdot\mathbf{t} + r^2\cdot\mathbf{e}_2$.
 \end{frame}
+
+\begin{frame}{Folding Scheme for Relaxed R1CS}
+	Use additively homomorphic commitment scheme. Commitment to $\mathbf{x}$ is denoted by $\overline{\mathbf{x}}$.
+	
+	\textbf{Common inputs:} $(u_1,\overline{\mathbf{z}_1},\overline{\mathbf{e}_1}),(u_2, \overline{\mathbf{z}_2}, \overline{\mathbf{e}_2})$. 
+	
+	\textbf{$\Prover$'s inputs:} $\mathbf{z}_1, \mathbf{z}_2, \mathbf{e}_1, \mathbf{e}_2$ and corresponding randomness.
+	
+	\textbf{Purpose:} obtain folded instance $\mathbf{z}$.
+	
+	\begin{itemize}
+		\item $\Prover$ sends $\overline{\mathbf{t}}$ to $\Verifier$.
+		\item $\Verifier$ sends a challenge $r \in \mathbb{F}$ to $\Prover$.
+		\item Both $\Prover, \Verifier$ compute $u := u_1 + r\cdot u_2$, $\overline{\mathbf{z}} := \overline{\mathbf{z}_1} + r\cdot \overline{\mathbf{z}_2}$ and $\overline{\mathbf{e}} := \overline{\mathbf{e}_1} + r\cdot\overline{\mathbf{t}} + r^2\cdot \overline{\mathbf{e}_2}$.
+		\item $\Prover$ outputs $u, \mathbf{z}$ and $\mathbf{e}$.
+	\end{itemize}  
+
+	\textbf{Non-Interactivity.} Use random oracle to sample $r$.
+\end{frame}
