@@ -1,0 +1,31 @@
+% !TeX root = main.tex
+\begin{frame}{Techical Overview - IVC from Folding Scheme}
+	Let $\NIFS = (\NIFSSetup, \NIFSKeyGen, \NIFSFold, \NIFSVerify)$ be non-interactive version of folding scheme $\FS$.
+	
+	Use $2$ types of instances:
+	\begin{itemize}
+		\item \textbf{Incremental instance.} $u_i$ for execution $F(z_i, \omega_i)$.
+		\item \textbf{Running instance.} $\mathsf{U}_i$ for recursively folding $\mathsf{u}_0, \dots, \mathsf{u}_{i - 1}$, i.e.,
+		\begin{equation*}
+			\mathsf{U}_i = \NIFSFold(\mathsf{u}_{i - 1}, \mathsf{U}_{i - 1}).
+		\end{equation*}
+	\end{itemize}
+\end{frame}
+\begin{frame}{Technical Overview (Continue)}
+	For all $i$, guarantee that $\mathsf{u}_i.\mathsf{x} = \hash(\vk, z_0, z_{i}, \mathsf{U}_i)$.
+	
+	Construct $F'$ working as follows:
+	\begin{itemize}
+		\item Obtain $\mathsf{U}_{i + 1} = \NIFSFold(\mathsf{u}_i, \mathsf{U}_i)$.
+		\item Run $\NIFSVerify$ to verify correct $\mathsf{U}_{i + 1}$.
+		\item Compute $z_{i + 1} = F(z_i, w_i)$.
+		\item Return $\mathsf{x} = \hash(\vk, z_0, z_{i+1}, \mathsf{U}_{i+1})$.
+	\end{itemize}
+	
+	Construct function $\trace$ to compute $\mathsf{u}_{i + 1}$ and use $F'$ as a sub-function.  
+	\begin{itemize}
+		\item Set $\mathsf{u}_{i+1}.\mathsf{x} = \mathsf{x}$ which is the output of $F'$.
+	\end{itemize}
+	
+	Realize $\trace$ as a relaxed R1CS.
+\end{frame}
