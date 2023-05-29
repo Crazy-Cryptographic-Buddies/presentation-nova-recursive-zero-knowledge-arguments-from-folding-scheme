@@ -1,4 +1,5 @@
 Presentation of **Nova: Recursive Zero-Knowledge Arguments from Folding Schemes**, accepted in CRYPTO 2022.
+
 Authors: Abhiram Kothapalli, Srinath Setty and Ioanna Tzialla.
 
 **Abstract.**
